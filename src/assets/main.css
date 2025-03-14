@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+  }
+  
+  #app {
+    height: 100vh;
+  }
+  
+  .el-container {
+    height: 100%;
+  }
