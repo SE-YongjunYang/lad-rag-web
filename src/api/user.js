@@ -17,33 +17,40 @@ export const userLogoutService = () => {
   return request.get('/user/logout')
 }
 
-// 获取用户信息
-export const userGetInfoService = (id) => {
-  return request.get('/user/' + id)
+// 修改密码
+export const userUpdatePassService = ({ userName, oldPassword, newPassword }) => {
+  oldPassword = encodeStr(oldPassword)
+  newPassword = encodeStr(newPassword)
+  return request.put('/user/password', { userName, oldPassword, newPassword })
 }
 
-// 删除用户
-export const userDeleteService = (id) => {
-  return request.delete('/user/' + id)
-}
-
-// 获取普通用户列表
-// export const userListService = (params) => {
-//   return request.get('/user/list', { params })
+// // 获取用户信息
+// export const userGetInfoService = (id) => {
+//   return request.get('/user/' + id)
 // }
-export const userListService = () => {
-  return request.get('/user/list')
-}
 
-// 设置用户权限
-export const userSetAuthService = ({ userId, permissionIds }) => {
-  return request.put('/user/permission', { userId, permissionIds })
-}
+// // 删除用户
+// export const userDeleteService = (id) => {
+//   return request.delete('/user/' + id)
+// }
 
-// 查询所有权限
-export const getAllPermissionService = () => {
-  return request.get('/permission/list')
-}
+// // 获取普通用户列表
+// // export const userListService = (params) => {
+// //   return request.get('/user/list', { params })
+// // }
+// export const userListService = () => {
+//   return request.get('/user/list')
+// }
+
+// // 设置用户权限
+// export const userSetAuthService = ({ userId, permissionIds }) => {
+//   return request.put('/user/permission', { userId, permissionIds })
+// }
+
+// // 查询所有权限
+// export const getAllPermissionService = () => {
+//   return request.get('/permission/list')
+// }
 // // 修改用户信息
 // export const userUpdateInfoService = ({ id, nickname, email }) => {
 //   return request.put('/my/userinfo', { id, nickname, email })

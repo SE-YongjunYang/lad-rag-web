@@ -87,7 +87,8 @@ const login = async () => {
       (4)el-form-item => :prop="xxx"        prop配置生效的是哪个校验规则 (和rules中的字段要对应)
   -->
   <el-row class="login-page">
-    <el-col :span="6" :offset="9" class="form">
+    <el-col :span="12" class="bg"></el-col>
+    <el-col :span="6" :offset="3" class="form">
       <!-- 登录相关 -->
       <el-form :model="ruleForm" :rules="rules" ref="form" size="large" autocomplete="off">
         <el-form-item>
@@ -128,8 +129,7 @@ const login = async () => {
   background-color: #fff;
   .bg {
     background:
-      url('@/assets/logo2.png') no-repeat 60% center / 240px auto,
-      url('@/assets/login_bg.jpg') no-repeat center / cover;
+      url('@/assets/lad-rag-logo.png') no-repeat center / cover;
     border-radius: 0 20px 20px 0;
   }
   .form {

@@ -33,7 +33,13 @@ request.interceptors.response.use(
   (response) => {
     // 3. 处理业务失败
     if (response.data.code !== 1) {
-      ElMessage.error(response.data.message || '服务异常')
+      ElMessage.error(response.data.msg || '服务异常')
+      // console.log('token过期或有误，跳转登录页')
+      // 如果是token过期或有误，则跳转登录页
+      if(response.data.msg && response.data.msg.includes('token')) {
+        // console.log('token过期或有误，跳转登录页')
+        router.push('/login')
+      }
       return Promise.reject(response.data)
     }
     // TODO 4. 摘取核心响应数据
@@ -47,7 +53,7 @@ request.interceptors.response.use(
       router.push('/login')
     }
     // TODO 6. 处理其他错误
-    ElMessage.error(error.response?.data?.message || '服务异常')
+    ElMessage.error(error.response?.data?.msg || '服务异常')
     return Promise.reject(error)
   }
 )

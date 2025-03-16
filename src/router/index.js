@@ -5,26 +5,30 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/LoginPage.vue')
+    component: () => import('@/views/LoginPage.vue')
   },
   {
     path: '/',
-    component: () => import('@/views/layout/LayoutContainer.vue'),
+    component: () => import('@/views/LayoutContainer.vue'),
     redirect: '/dataset/bgl',
     children: [
       {
         path: '/dataset/bgl',
         name: 'BGL',
-        component: () => import('@/views/dataset/BGLList.vue'),
+        component: () => import('@/views/BGL.vue')/* ,
         meta: {
           requiredPermissions: ['data.BGL.r'] // 需要 data.bgl.r 权限
-        }
+        } */
       },
       {
-        path: '/user/list',
-        name: 'UserList',
-        component: () => import('@/views/user/UserList.vue'),
-        meta: { requiresAdmin: true }
+        path: '/user/password',
+        name: 'Password',
+        component: () => import('@/views/UserPassword.vue')/* ,
+        meta: { requiresAdmin: true } */
+      },
+      {
+        path: '/alarm',
+        component: () => import('@/views/AlarmPage.vue')
       }
     ]
   },
@@ -45,7 +49,7 @@ router.beforeEach((to, from, next) => {
   if (!userStore.token && to.path!== '/login') 
     return { path: '/login' }
   
-  // 检查路由的权限要求
+  /* // 检查路由的权限要求
   if (to.meta.requiredPermissions) {
     console.log('requiredPermissions', to.meta.requiredPermissions)
     const hasPermission = to.meta.requiredPermissions.some(permission =>
@@ -57,7 +61,7 @@ router.beforeEach((to, from, next) => {
   }
   if(to.meta.requiresAdmin &&!userStore.user.userName === 'admin') {
     next({ path: '/' })
-  }
+  } */
   // 继续执行路由
   next()
 })
