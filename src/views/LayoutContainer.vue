@@ -7,7 +7,8 @@ import {
   Management,
   EditPen,
   UserFilled,
-  AlarmClock
+  AlarmClock,
+  Bell
  } from '@element-plus/icons-vue'
 
 
@@ -49,6 +50,10 @@ const handleLogout = async () => {
           <!-- <el-menu-item v-if="userStore.user?.userName === 'admin'" index="/user/list">
             <span>用户管理</span>
           </el-menu-item> -->
+          <el-menu-item index="/detect">
+            <el-icon><Bell /></el-icon>
+            <span>异常检测设置</span>
+          </el-menu-item>
           <el-menu-item index="/alarm">
             <el-icon><AlarmClock /></el-icon>
             <span>告警设置</span>

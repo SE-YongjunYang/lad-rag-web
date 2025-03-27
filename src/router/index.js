@@ -28,7 +28,11 @@ const routes = [
       },
       {
         path: '/alarm',
-        component: () => import('@/views/AlarmPage.vue')
+        component: () => import('@/views/alarm/AlarmPage.vue')
+      },
+      {
+        path: '/detect',
+        component: () => import('@/views/detect/DetectPage.vue')
       }
     ]
   },
