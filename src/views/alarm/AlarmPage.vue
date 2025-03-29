@@ -244,10 +244,15 @@ const toggleStatus = async (config) => {
       <el-table-column label="触发类型">
         <template #default="{ row }">
           {{ 
+            row.triggerType === 1 ? '异常模板数量' : '含异常模板日志数量'
+          }}
+        </template>
+        <!-- <template #default="{ row }">
+          {{ 
             row.triggerType === 1 ? '异常模板数量' : 
             row.triggerType === 2 ? '含异常模板日志数量' : '最低Level等级'
           }}
-        </template>
+        </template> -->
       </el-table-column>
       <el-table-column label="时间间隔">
         <template #default="{ row }">
@@ -257,7 +262,7 @@ const toggleStatus = async (config) => {
           }}
         </template>
       </el-table-column>
-      <el-table-column label="最低Level" prop="level" v-if="alarmConfigs.some(c => c.triggerType === 3)" />
+      <!-- <el-table-column label="最低Level" prop="level" v-if="alarmConfigs.some(c => c.triggerType === 3)" /> -->
       <el-table-column label="阈值" prop="threshold" />
       <el-table-column label="邮件地址" prop="email" width="300"/>
       <el-table-column label="启用状态" width="100">
@@ -273,8 +278,8 @@ const toggleStatus = async (config) => {
       </el-table-column>
       <el-table-column label="操作" width="180">
         <template #default="{ row }">
-          <el-button size="small" @click="handleEdit(row)">编辑</el-button>
-          <el-button size="small" type="danger" @click="handleDelete(row.id)">删除</el-button>
+          <el-button :disabled="row.enabled === 1" size="small" @click="handleEdit(row)">编辑</el-button>
+          <el-button :disabled="row.enabled === 1" size="small" type="danger" @click="handleDelete(row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -296,7 +301,7 @@ const toggleStatus = async (config) => {
           <el-radio-group v-model="currentConfig.triggerType">
             <el-radio :value="1">异常模板数量</el-radio>
             <el-radio :value="2">含异常模板日志数量</el-radio>
-            <el-radio :value="3">最低Level等级</el-radio>
+            <!-- <el-radio :value="3">最低Level等级</el-radio> -->
           </el-radio-group>
         </el-form-item>
 
@@ -314,7 +319,7 @@ const toggleStatus = async (config) => {
           />
         </el-form-item>
 
-        <el-form-item 
+        <!-- <el-form-item 
           label="最低Level等级" 
           v-if="currentConfig.triggerType === 3"
         >
@@ -324,7 +329,7 @@ const toggleStatus = async (config) => {
             <el-option label="SEVERE" value="SEVERE"></el-option>
             <el-option label="FATAL" value="FATAL"></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item> -->
 
         <el-form-item label="阈值" prop="threshold">
           <el-input-number 

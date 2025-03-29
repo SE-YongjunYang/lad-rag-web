@@ -16,5 +16,5 @@ import request from '@/utils/request'
 // }
 
 export const getLogNamesService = () => {
-  return request.get('/logs')
+  return request.get('/logindex')
 }
