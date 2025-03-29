@@ -1,6 +1,6 @@
  
 import JSEncrypt from 'jsencrypt';
- 
+import { sha256 } from 'js-sha256';
 // 可能需要需要先安装jsencrypt库，执行：npm install jsencrypt 
  
 /**
@@ -23,7 +23,7 @@ export const getLoginPublicKey = () => {
  
 /**
  * 加密
- * @param text  需要加密的文本
+ * @param password  需要加密的密码
  * @param publicKey   公钥
  * @returns {string | false}
  */
@@ -34,10 +34,14 @@ export const getLoginPublicKey = () => {
 //   JSE.setPublicKey(publicKey);
 //   return JSE.encrypt(text);
 // }
-export const encodeStr = (text) => {
+export const encodeStr = (password) => {
     // RSA（非对称加密）
     const JSE = new JSEncrypt();
+    // 1. 前端第一次哈希（SHA-256）
+    const hashedPassword = sha256(password);
+    console.log('hashedPassword:', hashedPassword);
     // 设置公钥
     JSE.setPublicKey(getLoginPublicKey());
-    return JSE.encrypt(text);
+    // 2. 前端加密（RSA）
+    return JSE.encrypt(hashedPassword);
   }
