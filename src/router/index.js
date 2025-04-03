@@ -5,17 +5,17 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/LoginPage.vue')
+    component: () => import('@/views/login/LoginPage.vue')
   },
   {
     path: '/',
     component: () => import('@/views/LayoutContainer.vue'),
-    redirect: '/dataset/bgl',
+    redirect: '/kibana',
     children: [
       {
-        path: '/dataset/bgl',
-        name: 'BGL',
-        component: () => import('@/views/BGL.vue')/* ,
+        path: '/kibana',
+        name: 'kibana',
+        component: () => import('@/views/kibanaPage.vue')/* ,
         meta: {
           requiredPermissions: ['data.BGL.r'] // 需要 data.bgl.r 权限
         } */
@@ -23,7 +23,12 @@ const routes = [
       {
         path: '/user/password',
         name: 'Password',
-        component: () => import('@/views/UserPassword.vue')/* ,
+        component: () => import('@/views/user/UserPassword.vue')/* ,
+        meta: { requiresAdmin: true } */
+      },
+      {
+        path: '/user/list',
+        component: () => import('@/views/user/UserList.vue')/* ,
         meta: { requiresAdmin: true } */
       },
       {

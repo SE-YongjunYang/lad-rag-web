@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 import { encodeStr } from '@/utils/encryptUtils';
 // 添加
-export const userAddService = ({ userName, password, permissionIds }) => {
+export const userAddService = ({ userName, password }) => {
   password = encodeStr(password)
-  return request.post('/user', { userName, password, permissionIds })
+  return request.post('/user', { userName, password })
 }
 
 // 用户登录
@@ -29,18 +29,16 @@ export const userUpdatePassService = ({ userName, oldPassword, newPassword }) =>
 //   return request.get('/user/' + id)
 // }
 
-// // 删除用户
-// export const userDeleteService = (id) => {
-//   return request.delete('/user/' + id)
-// }
 
-// // 获取普通用户列表
-// // export const userListService = (params) => {
-// //   return request.get('/user/list', { params })
-// // }
-// export const userListService = () => {
-//   return request.get('/user/list')
-// }
+// 删除用户
+export const userDeleteService = (id) => {
+  return request.delete('/user/' + id)
+}
+
+  // 获取普通用户列表
+export const userListService = () => {
+  return request.get('/user/list')
+}
 
 // // 设置用户权限
 // export const userSetAuthService = ({ userId, permissionIds }) => {

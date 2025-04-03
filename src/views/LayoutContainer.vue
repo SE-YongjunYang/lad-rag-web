@@ -45,7 +45,7 @@ const handleLogout = async () => {
         >
           <el-menu-item index="/dataset/bgl">
             <el-icon><Management /></el-icon>
-            <span>BGL日志</span>
+            <span>Kibana</span>
           </el-menu-item>
           <!-- <el-menu-item v-if="userStore.user?.userName === 'admin'" index="/user/list">
             <span>用户管理</span>
@@ -68,6 +68,10 @@ const handleLogout = async () => {
             <el-menu-item index="/user/password">
               <el-icon><EditPen /></el-icon>
               <span>修改密码</span>
+            </el-menu-item>
+            <el-menu-item index="/user/list" v-if="userStore.user?.userName === 'admin'">
+              <el-icon><EditPen /></el-icon>
+              <span>用户列表</span>
             </el-menu-item>
           </el-sub-menu>
         </el-menu>

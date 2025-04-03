@@ -41,8 +41,7 @@ const rules = {
   ],
   newPassword: [
     { required: true, message: '新密码不能为空', trigger: 'blur' },
-    { min: 6, max: 15, message: '密码长度必须在6到15位之间', trigger: 'blur' },
-    { validator: validateNewPwd, trigger: 'blur' }
+    { min: 6, max: 15, message: '密码长度必须在6到15位之间', trigger: 'blur' }
   ],
   re_pwd: [
     { required: true, message: '确认密码不能为空', trigger: 'blur' },

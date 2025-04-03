@@ -57,7 +57,7 @@ const login = async () => {
   // 校验通过，开始登录
   const res = await userLoginService(ruleForm.value)
   // 登录成功，保存token到store并持久化
-  console.log(res)
+  // console.log(res)
   res.data && userStore.setUserInfo(res.data)
   
 

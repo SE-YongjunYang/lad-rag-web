@@ -39,7 +39,7 @@ export const encodeStr = (password) => {
     const JSE = new JSEncrypt();
     // 1. 前端第一次哈希（SHA-256）
     const hashedPassword = sha256(password);
-    console.log('hashedPassword:', hashedPassword);
+    // console.log('hashedPassword:', hashedPassword);
     // 设置公钥
     JSE.setPublicKey(getLoginPublicKey());
     // 2. 前端加密（RSA）
