@@ -49,13 +49,21 @@ const getUserList = async () => {
 // 调用
 getUserList()
 
+const formRef = ref(null)
 const onSubmit = async () => {
-  // console.log(form.value)
-  // 新增用户, 提交新增
-  await userAddService({userName: form.value.userName, password: form.value.password})
-  // 关闭弹窗
+  const valid = await formRef.value.validate()
+  if (valid) {
+    await userAddService({userName: form.value.userName, password: form.value.password})
+    ElMessage.success('添加用户成功！')
+    form.value.userName = ''
+    form.value.password = ''
+    form.value.re_pwd = ''
+    // 关闭弹窗
   dialogVisible.value = false
   getUserList()
+  } else {
+    ElMessage.error('请检查表单输入是否正确')
+  }
 }
 
 const deleteUser = async (id) => {

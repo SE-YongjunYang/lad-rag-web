@@ -22,6 +22,7 @@ const defaultConfig = {
   logName: '',
   timeUnit: 'HOUR',
   timeInterval: 5,
+  isTrain: 0,
   detectHistory: 0,
   enabled: 0
 };
@@ -194,7 +195,14 @@ const toggleStatus = async (config) => {
             :step="timeRange[currentConfig.timeUnit].step || 1"
           />
         </el-form-item>
-
+        
+        <el-form-item label="训练模型">
+          <el-switch
+            v-model="currentConfig.isTrain"
+            :active-value=1
+            :inactive-value=0
+          />
+        </el-form-item>
         <el-form-item label="检测历史日志">
           <el-switch
             v-model="currentConfig.detectHistory"

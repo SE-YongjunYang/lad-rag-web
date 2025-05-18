@@ -16,7 +16,8 @@ export const updateDetectionConfigService = (detectionConfig) => {
         logName: detectionConfig.logName,
         timeUnit: detectionConfig.timeUnit,
         timeInterval: detectionConfig.timeInterval, 
-        detectHistory: parseInt(detectionConfig.detectHistory)
+        detectHistory: parseInt(detectionConfig.detectHistory),
+        isTrain: parseInt(detectionConfig.isTrain)
     })
 }
 
@@ -26,7 +27,8 @@ export const addDetectionConfigService = (detectionConfig) => {
         logName: detectionConfig.logName,
         timeUnit: detectionConfig.timeUnit,
         timeInterval: detectionConfig.timeInterval, 
-        detectHistory: parseInt(detectionConfig.detectHistory)
+        detectHistory: parseInt(detectionConfig.detectHistory),
+        isTrain: parseInt(detectionConfig.isTrain)
     })
 }
 
